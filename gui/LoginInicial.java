@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.EnergiaSolar.gui;
+
+import com.mycompany.EnergiaSolar.gui.Cliente.CadastroCliente;
+import com.mycompany.EnergiaSolar.gui.Empresa.LoginEmpresa;
+
 /**
  *
  * @author Tasso
@@ -101,11 +105,15 @@ public class LoginInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        LoginEmpresa login = new LoginEmpresa();
+        login.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        CadastroCliente cadastro = new CadastroCliente();
+        cadastro.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

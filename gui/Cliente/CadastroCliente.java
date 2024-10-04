@@ -128,7 +128,9 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void botãoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botãoCadastroActionPerformed
-        // TODO add your handling code here:
+        InicioCliente inicio = new InicioCliente();
+        inicio.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_botãoCadastroActionPerformed
 
     /**

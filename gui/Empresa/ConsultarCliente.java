@@ -4,6 +4,8 @@
  */
 package com.mycompany.EnergiaSolar.gui.Empresa;
 
+import com.mycompany.EnergiaSolar.gui.Cliente.*;
+
 /**
  *
  * @author Tasso
@@ -121,11 +123,13 @@ public class ConsultarCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
+        //aparecer texto
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        CadastroCliente cadastro = new CadastroCliente();
+        cadastro.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
