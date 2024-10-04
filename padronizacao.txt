@@ -1,0 +1,5 @@
+Para fins de organização de código, o mesmo deve seguir a seguinte estrutura:
+
+-> PascalCase para nomes de classes, enums, interfaces...
+-> snake_case para atributos de classes.
+-> camelCase para nomes de variáveis e funções(Exceto funções construtoras que utilizam PascalCase).
