@@ -5,5 +5,10 @@ public class Fabricante {
 
     public Fabricante(String nome) {
         this.nome = nome;
+        AplicacaoService.adicionarFabricante(this);
+    }
+    
+    public String getNome() {
+    	return this.nome;
     }
 }

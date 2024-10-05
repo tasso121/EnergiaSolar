@@ -1,44 +1,86 @@
 package poo.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class AplicacaoService {
-    private List<Cliente> clientes;
-    private List<String> notificacoes;
-    private float margemLucro;
-    private float custoMaoDeObra;
-    private String senha;
+public abstract class AplicacaoService {
+    private static List<Cliente> clientes = new ArrayList<>();
+    private static List<String> notificacoes = new ArrayList<>();
+    private static List<Fabricante> fabricantes = new ArrayList<>();
+    private static List<Equipamento> equipamentos = new ArrayList<>();
+    private static final float margemLucro = 0.3f;
+    private static final float custoMaoDeObra = 1200;
+    private static final String senha = "3n3rg1@So7a@r";
 
-    public void cadastrarCliente(String nome, String endereco, String telefone, String senha){
-
+    public static void cadastrarCliente(String nome, String endereco, String telefone, String senha) {
+    	new Cliente(nome, endereco, telefone, senha);
     }
 
-    public void cadastrarFabricante(String nome){
-
+    public static void cadastrarFabricante(String nome){
+    	new Fabricante(nome);
     }
 
-    public void cadastrarPlacaSolar(String modelo, float preco, Fabricante fabricante, float capacidade){
-
+    public static void cadastrarPlacaSolar(String modelo, float preco, Fabricante fabricante, float capacidade) {
+    	new PlacaSolar(modelo, preco, fabricante, capacidade);
     }
 
-    public void cadastrarInversor(String modelo, float preco, Fabricante fabricante, float potencia){
-
+    public static void cadastrarInversor(String modelo, float preco, Fabricante fabricante, float potencia) {
+    	new Inversor(modelo, preco, fabricante, potencia);
     }
 
-//    public int calcularNumeroPaineis(){}
-//    public int calcularNumeroInversores(){}
-//    public float calcularOrcamento(){}
-//    public void enviarOrcamento(){}
-//    private void notificarCliente(){}
-//    public void adcionarNotficacao(){}
-//    public String obterInformacoes(){}
+    public static int calcularNumeroPaineis(Projeto projeto, PlacaSolar placa, int incidenciaSolar) {
+    	int numeroPaineis = (int)Math.ceil(projeto.getConsumoCliente() / (incidenciaSolar * placa.getCapacidade() * 30));
+    	projeto.setPainel(placa);
+    	projeto.setQtdPaineis(numeroPaineis);
+    	
+    	return numeroPaineis;
+    }
+    
+    public static int calcularNumeroInversores(Projeto projeto, Inversor inversor) {
+    	int numeroInversores = (int)Math.ceil((projeto.getQtdPaineis() * projeto.getPainel().getCapacidade()) / inversor.getPotencia());
+    	projeto.setInversor(inversor);
+    	projeto.setQtdInversores(numeroInversores);
+    	
+    	return numeroInversores;
+    }
+    
+    public static float calcularOrcamento(float custoPlacas, float custoInversores) {
+    	float orcamento = custoPlacas + custoInversores + custoMaoDeObra;
+    	orcamento += orcamento * margemLucro;
+    	
+    	return orcamento;
+    }
+    
+    public static void enviarOrcamento(Cliente cliente, Projeto projeto, float valorOrcamento) {
+    	new Orcamento(valorOrcamento, projeto);
+    	notificarCliente(cliente, projeto);
+    }
+    
+    private static void notificarCliente(Cliente cliente, Projeto projeto) {
+    	String mensagem = "Novo orçamento lançado referente ao projeto de id #" + projeto.getId();
+    	
+    	cliente.adicionarNotificacao(mensagem);
+    }
+    
+    public static void adicionarNotificacao(String notificacao) {
+    	notificacoes.add(notificacao);
+    }
 
-
-    public List<String> getNotificacoes() {
+    public static List<String> getNotificacoes() {
         return notificacoes;
     }
 
-    public String getSenha() {
+    public static String getSenha() {
         return senha;
     }
+    
+    public static void adicionarFabricante(Fabricante fabricante) {
+    	fabricantes.add(fabricante);
+    }
+    
+    public static void adicionarEquipamento(Equipamento equipamento) {
+    	equipamentos.add(equipamento);
+    }
+    
+//  public static String obterInformacoes(){}
 }

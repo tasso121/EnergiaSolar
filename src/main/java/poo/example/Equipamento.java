@@ -3,7 +3,7 @@ package poo.example;
 public abstract class Equipamento {
     private String modelo;
     private float preco;
-    Fabricante fabricante;
+    private Fabricante fabricante;
 
     public String getModelo() {
         return modelo;
@@ -22,4 +22,6 @@ public abstract class Equipamento {
         this.preco = preco;
         this.fabricante = fabricante;
     }
+    
+    public abstract String obterInformacoes();
 }
