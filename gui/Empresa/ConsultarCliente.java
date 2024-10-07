@@ -17,6 +17,8 @@ public class ConsultarCliente extends javax.swing.JFrame {
      */
     public ConsultarCliente() {
         initComponents();
+        
+        configurarComponentes();
     }
 
     /**
@@ -83,7 +85,9 @@ public class ConsultarCliente extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(127, 127, 127)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(botaoConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -121,12 +125,20 @@ public class ConsultarCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void configurarComponentes() {
+        // Remove o texto padrão nos campos de texto
+        jLabel2.setVisible(false);
+    }
+    
     private void consultarClienteNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarClienteNomeActionPerformed
         //aparecer texto
     }//GEN-LAST:event_consultarClienteNomeActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        jLabel2.setVisible(true);
+        
         CadastroCliente cadastro = new CadastroCliente();
         cadastro.setVisible(true);
         this.dispose();

@@ -1,4 +1,4 @@
-package poo.example;
+package com.mycompany.EnergiaSolar.src.main.java.poo.example;
 
 public class Inversor extends Equipamento {
     private float potencia;

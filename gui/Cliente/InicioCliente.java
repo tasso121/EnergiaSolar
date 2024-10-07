@@ -116,7 +116,10 @@ public class InicioCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoOrcamentoActionPerformed
-        Orçamento orcamento = new Orçamento();
+        
+        
+        
+        OrcamentoCliente orcamento = new OrcamentoCliente();
         orcamento.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoOrcamentoActionPerformed
@@ -128,7 +131,7 @@ public class InicioCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoProjetoActionPerformed
 
     private void botaoReclamacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoReclamacaoActionPerformed
-        ReclamaçõesCliente reclamacao = new ReclamaçõesCliente();
+        ReclamacoesCliente reclamacao = new ReclamacoesCliente();
         reclamacao.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoReclamacaoActionPerformed

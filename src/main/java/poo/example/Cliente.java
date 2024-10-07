@@ -1,4 +1,4 @@
-package poo.example;
+package com.mycompany.EnergiaSolar.src.main.java.poo.example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ public class Cliente {
     private final String senha;
     private List<String> notificacoes;
     private List<Projeto> projetos;
+    public static List<Cliente> listaClientes;
 
     public Cliente(String nome, String endereco, String telefone, String senha) {
         this.nome = nome;
@@ -21,8 +22,18 @@ public class Cliente {
     }
 
     public void solicitarProjeto(float consumoMedio) {
-    	Projeto projeto = new Projeto(this, consumoMedio);
-    	this.notificarEmpresa();
+        Projeto projeto = new Projeto(this, consumoMedio);
+        this.adicionarProjeto(projeto);
+        this.notificarEmpresa();
+    }
+    
+    public static Cliente buscarClientePorNome(String nome) {
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getNome().equalsIgnoreCase(nome)) {
+                return cliente;
+            }
+        }
+        return null;
     }
 
     private void notificarEmpresa() {
@@ -52,9 +63,26 @@ public class Cliente {
     	return this.notificacoes;
     }
     
+    public String getNome() {
+    	return this.nome;
+    }
+        
     public String getSenha() {
     	return this.senha;
+    }  
+    
+    public String getEndereco() {
+    	return this.endereco;
     }
+    
+    public void adicionarProjeto(Projeto projeto) {
+        this.projetos.add(projeto);
+    }
+    
+    public List<Projeto> obterProjetos() {
+        return this.projetos;
+    }
+
     
     //public String obterInformacoes() {}
 }

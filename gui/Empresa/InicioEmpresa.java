@@ -146,7 +146,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoClientesActionPerformed
 
     private void botaoRelatóriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRelatóriosActionPerformed
-        Relatório relatorio = new Relatório();
+        Relatorio relatorio = new Relatorio();
         relatorio.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoRelatóriosActionPerformed

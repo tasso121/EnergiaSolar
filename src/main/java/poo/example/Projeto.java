@@ -1,4 +1,6 @@
-package poo.example;
+package com.mycompany.EnergiaSolar.src.main.java.poo.example;
+
+import com.mycompany.EnergiaSolar.src.main.java.poo.example.Cliente;
 
 public class Projeto {
     private int id;
