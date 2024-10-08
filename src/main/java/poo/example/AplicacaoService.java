@@ -126,4 +126,16 @@ public abstract class AplicacaoService {
     	
     	return null;
     }
+    
+    public static List<Projeto> getProjetos() {
+    	return projetos;
+    }
+    
+    public static List<Cliente> getClientes() {
+    	return clientes;
+    }
+    
+    public static List<Equipamento> getEquipamentos() {
+    	return equipamentos;
+    }
 }
