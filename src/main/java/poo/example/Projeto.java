@@ -1,6 +1,4 @@
-package com.mycompany.EnergiaSolar.src.main.java.poo.example;
-
-import com.mycompany.EnergiaSolar.src.main.java.poo.example.Cliente;
+package poo.example;
 
 public class Projeto {
     private int id;
@@ -10,8 +8,8 @@ public class Projeto {
     private Inversor inversor;
     private Integer qtd_paineis;
     private Integer qtd_inversores;
-    private static int ultimo_id = 0;
     private float consumo_medio_cliente;
+    private static int ultimo_id = 0;
 
     public Projeto(Cliente cliente, float consumoMedio) {
     	this.id = ++ultimo_id;
@@ -22,6 +20,8 @@ public class Projeto {
         this.qtd_paineis = null;
         this.qtd_inversores = null;
         this.consumo_medio_cliente = consumoMedio;
+        this.cliente.adicionarProjeto(this);
+        AplicacaoService.adicionarProjeto(this);
     }
     
     public int getId() {
@@ -72,5 +72,17 @@ public class Projeto {
     	this.orcamento = orcamento;
     }
     
-    //public String obterInformacoes() {}
+    public String obterInformacoes() {
+    	String telefoneCliente = this.cliente.getTelefone() + ';';
+    	String modeloPlaca = this.painel != null ? this.painel.getModelo() + ';' : "null;"; 
+    	String modeloInversor = this.inversor != null ? this.inversor.getModelo() + ';' : "null;";
+    	String qtdPaineis = String.valueOf(this.qtd_paineis) + ';';
+    	String qtdInversores = String.valueOf(this.qtd_inversores) + ';';
+    	String consumoMedioCliente = String.valueOf(this.consumo_medio_cliente);
+    	
+    	String informacao = telefoneCliente + modeloPlaca + modeloInversor + qtdPaineis
+    			           + qtdInversores + consumoMedioCliente;
+    	
+    	return informacao;
+    }
 }

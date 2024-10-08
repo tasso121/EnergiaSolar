@@ -1,4 +1,4 @@
-package com.mycompany.EnergiaSolar.src.main.java.poo.example;
+package poo.example;
 
 public abstract class Equipamento {
     private String modelo;
@@ -6,15 +6,15 @@ public abstract class Equipamento {
     private Fabricante fabricante;
 
     public String getModelo() {
-        return modelo;
+        return this.modelo;
     }
 
     public float getPreco() {
-        return preco;
+        return this.preco;
     }
 
     public Fabricante getFabricante() {
-        return fabricante;
+        return this.fabricante;
     }
 
     public Equipamento(String modelo, float preco, Fabricante fabricante) {

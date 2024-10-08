@@ -1,4 +1,4 @@
-package com.mycompany.EnergiaSolar.src.main.java.poo.example;
+package poo.example;
 
 public class Orcamento {
     private float valor;
@@ -20,5 +20,11 @@ public class Orcamento {
         return valor;
     }
     
-    //public String obterInformacoes() {}
+    public String obterInformacoes() {
+    	String valor = String.valueOf(this.valor) + ';';
+    	String status = String.valueOf(this.status) + ';';
+    	String projetoId = String.valueOf(this.projeto.getId());
+    	
+    	return valor + status + projetoId;
+    }
 }
