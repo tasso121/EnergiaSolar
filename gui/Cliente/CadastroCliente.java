@@ -4,9 +4,7 @@
  */
 package com.mycompany.EnergiaSolar.gui.Cliente;
 
-import com.mycompany.EnergiaSolar.src.main.java.poo.example.Cliente; 
-import java.util.ArrayList;
-import java.util.List;
+import poo.example.AplicacaoService;
 import javax.swing.JOptionPane;
 
 /**
@@ -154,8 +152,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             return;
         }
 
-        Cliente novoCliente = new Cliente(nome, endereco, telefone, senhaCliente);
-        Cliente.listaClientes.add(novoCliente);
+        AplicacaoService.cadastrarCliente(nome, endereco, telefone, senhaCliente);
         // mensagem de sucesso
         JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso!");
 

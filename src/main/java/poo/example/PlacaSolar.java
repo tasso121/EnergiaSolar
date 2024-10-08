@@ -1,4 +1,4 @@
-package com.mycompany.EnergiaSolar.src.main.java.poo.example;
+package poo.example;
 
 public class PlacaSolar extends Equipamento {
     private float capacidade;
