@@ -30,8 +30,10 @@ public class InicioEmpresa extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         botaoClientes = new javax.swing.JButton();
         botaoProjetos = new javax.swing.JButton();
-        botaoEquipamentos = new javax.swing.JButton();
+        botaoInversor = new javax.swing.JButton();
         botaoRelatórios = new javax.swing.JButton();
+        botaoPlacaSolar = new javax.swing.JButton();
+        botaoFabricante = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,12 +60,12 @@ public class InicioEmpresa extends javax.swing.JFrame {
             }
         });
 
-        botaoEquipamentos.setBackground(new java.awt.Color(0, 0, 153));
-        botaoEquipamentos.setForeground(new java.awt.Color(255, 255, 255));
-        botaoEquipamentos.setText("Equipamentos");
-        botaoEquipamentos.addActionListener(new java.awt.event.ActionListener() {
+        botaoInversor.setBackground(new java.awt.Color(0, 0, 153));
+        botaoInversor.setForeground(new java.awt.Color(255, 255, 255));
+        botaoInversor.setText("Inversor");
+        botaoInversor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoEquipamentosActionPerformed(evt);
+                botaoInversorActionPerformed(evt);
             }
         });
 
@@ -76,6 +78,24 @@ public class InicioEmpresa extends javax.swing.JFrame {
             }
         });
 
+        botaoPlacaSolar.setBackground(new java.awt.Color(0, 0, 153));
+        botaoPlacaSolar.setForeground(new java.awt.Color(255, 255, 255));
+        botaoPlacaSolar.setText("Placa Solar");
+        botaoPlacaSolar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoPlacaSolarActionPerformed(evt);
+            }
+        });
+
+        botaoFabricante.setBackground(new java.awt.Color(0, 0, 153));
+        botaoFabricante.setForeground(new java.awt.Color(255, 255, 255));
+        botaoFabricante.setText("Fabricante");
+        botaoFabricante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoFabricanteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -84,33 +104,44 @@ public class InicioEmpresa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(botaoClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botaoRelatórios, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botaoProjetos, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botaoClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botaoEquipamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botaoProjetos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botaoRelatórios, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
-                        .addGap(51, 51, 51))))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(botaoInversor, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(botaoPlacaSolar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(botaoFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoProjetos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botaoRelatórios, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                    .addComponent(botaoEquipamentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(88, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(botaoProjetos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(botaoRelatórios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botaoClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+                        .addGap(55, 55, 55)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botaoInversor, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoPlacaSolar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -133,11 +164,11 @@ public class InicioEmpresa extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botaoProjetosActionPerformed
 
-    private void botaoEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEquipamentosActionPerformed
-        Equipamentos equipamentos = new Equipamentos();
-        equipamentos.setVisible(true);
+    private void botaoInversorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInversorActionPerformed
+        Inversor inversor = new Inversor();
+        inversor.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_botaoEquipamentosActionPerformed
+    }//GEN-LAST:event_botaoInversorActionPerformed
 
     private void botaoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoClientesActionPerformed
         ConsultarCliente cliente = new ConsultarCliente();
@@ -150,6 +181,18 @@ public class InicioEmpresa extends javax.swing.JFrame {
         relatorio.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoRelatóriosActionPerformed
+
+    private void botaoPlacaSolarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPlacaSolarActionPerformed
+        EquipamentoPlacaSolar placaSolar = new EquipamentoPlacaSolar();
+        placaSolar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoPlacaSolarActionPerformed
+
+    private void botaoFabricanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFabricanteActionPerformed
+        EquipamentoFabricante fabricante = new EquipamentoFabricante();
+        fabricante.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoFabricanteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,7 +231,9 @@ public class InicioEmpresa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoClientes;
-    private javax.swing.JButton botaoEquipamentos;
+    private javax.swing.JButton botaoFabricante;
+    private javax.swing.JButton botaoInversor;
+    private javax.swing.JButton botaoPlacaSolar;
     private javax.swing.JButton botaoProjetos;
     private javax.swing.JButton botaoRelatórios;
     private javax.swing.JLabel jLabel1;

@@ -4,16 +4,19 @@
  */
 package com.mycompany.EnergiaSolar.gui.Empresa;
 
+import com.mycompany.EnergiaSolar.src.main.java.poo.example.AplicacaoService;
+import com.mycompany.EnergiaSolar.src.main.java.poo.example.Fabricante;
+
 /**
  *
  * @author Tasso
  */
-public class Equipamentos extends javax.swing.JFrame {
+public class EquipamentoPlacaSolar extends javax.swing.JFrame {
 
     /**
      * Creates new form Equipamentos
      */
-    public Equipamentos() {
+    public EquipamentoPlacaSolar() {
         initComponents();
     }
 
@@ -29,10 +32,10 @@ public class Equipamentos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         equipamentoModelo = new javax.swing.JTextField();
-        equipamentoCapacidade = new javax.swing.JTextField();
-        equipamentoInversor = new javax.swing.JTextField();
+        equipamentoPreço = new javax.swing.JTextField();
         equipamentoFabricante = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        capacidade = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,9 +46,7 @@ public class Equipamentos extends javax.swing.JFrame {
 
         equipamentoModelo.setText("Modelo");
 
-        equipamentoCapacidade.setText("Capacidade");
-
-        equipamentoInversor.setText("Inversor");
+        equipamentoPreço.setText("Preço");
 
         equipamentoFabricante.setText("Fabricante");
 
@@ -58,6 +59,8 @@ public class Equipamentos extends javax.swing.JFrame {
             }
         });
 
+        capacidade.setText("Capacidade");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -69,12 +72,14 @@ public class Equipamentos extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(equipamentoModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(equipamentoCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(equipamentoInversor, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(equipamentoPreço, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(equipamentoFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(160, 160, 160)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(capacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -87,9 +92,9 @@ public class Equipamentos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(equipamentoModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(equipamentoCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(equipamentoInversor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(capacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(equipamentoPreço, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(26, Short.MAX_VALUE))
@@ -111,13 +116,35 @@ public class Equipamentos extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String modelo = equipamentoModelo.getText();
-        String capacidade = equipamentoCapacidade.getText();
-        String inversor = equipamentoInversor.getText();
-        String fabricante = equipamentoFabricante.getText();
-        
-        InicioEmpresa inicio = new InicioEmpresa();
-        inicio.setVisible(true);
-        this.dispose();
+        String precoTexto = equipamentoPreço.getText();
+        String fabricanteNome = equipamentoFabricante.getText();
+        String capacidadeTexto = capacidade.getText();
+
+        if (modelo.isEmpty() || precoTexto.isEmpty() || fabricanteNome.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos.", "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            float preco = Float.parseFloat(precoTexto);
+            float capacidade = Float.parseFloat(capacidadeTexto);
+
+            Fabricante fabricante = AplicacaoService.obterFabricante(fabricanteNome);
+            if (fabricante == null) {
+                fabricante = new Fabricante(fabricanteNome);
+                AplicacaoService.adicionarFabricante(fabricante);
+            }
+
+            AplicacaoService.cadastrarPlacaSolar(modelo, preco, fabricante, capacidade);
+            javax.swing.JOptionPane.showMessageDialog(this, "Equipamento Placa Solar cadastrado com sucesso!");
+
+            InicioEmpresa inicio = new InicioEmpresa();
+            inicio.setVisible(true);
+            this.dispose();
+
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Preço inválido. Insira um valor numérico.", "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -137,29 +164,29 @@ public class Equipamentos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Equipamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EquipamentoPlacaSolar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Equipamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EquipamentoPlacaSolar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Equipamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EquipamentoPlacaSolar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Equipamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EquipamentoPlacaSolar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Equipamentos().setVisible(true);
+                new EquipamentoPlacaSolar().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField equipamentoCapacidade;
+    private javax.swing.JTextField capacidade;
     private javax.swing.JTextField equipamentoFabricante;
-    private javax.swing.JTextField equipamentoInversor;
     private javax.swing.JTextField equipamentoModelo;
+    private javax.swing.JTextField equipamentoPreço;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
