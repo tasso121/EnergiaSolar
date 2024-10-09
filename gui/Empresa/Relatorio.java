@@ -4,6 +4,9 @@
  */
 package com.mycompany.EnergiaSolar.gui.Empresa;
 
+import com.mycompany.EnergiaSolar.src.main.java.poo.example.*;
+import java.util.List;
+
 /**
  *
  * @author Tasso
@@ -29,7 +32,7 @@ public class Relatorio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         relatorioEndereco = new javax.swing.JTextField();
-        relatorioNome = new javax.swing.JTextField();
+        relatorioTelefone = new javax.swing.JTextField();
         botaoGerar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -50,10 +53,10 @@ public class Relatorio extends javax.swing.JFrame {
             }
         });
 
-        relatorioNome.setText("Nome");
-        relatorioNome.addActionListener(new java.awt.event.ActionListener() {
+        relatorioTelefone.setText("Telefone");
+        relatorioTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                relatorioNomeActionPerformed(evt);
+                relatorioTelefoneActionPerformed(evt);
             }
         });
 
@@ -87,7 +90,7 @@ public class Relatorio extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                        .addComponent(relatorioNome)
+                        .addComponent(relatorioTelefone)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addComponent(botaoGerar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(21, 21, 21)))
@@ -115,7 +118,7 @@ public class Relatorio extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addGap(62, 62, 62))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(relatorioNome, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(relatorioTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(relatorioEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -146,26 +149,43 @@ public class Relatorio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_relatorioEnderecoActionPerformed
 
-    private void relatorioNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioNomeActionPerformed
+    private void relatorioTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioTelefoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_relatorioNomeActionPerformed
+    }//GEN-LAST:event_relatorioTelefoneActionPerformed
 
     private void botaoGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGerarActionPerformed
-        //teste
-        String situacao = "Ativo";
-        String equipamentos = "Padrão"; 
-        double custo = 5;
-        double lucro = 10;
+       String telefone = relatorioTelefone.getText();
+       String endereco = relatorioEndereco.getText();
 
-        jLabel2.setText("Situação atual: ");
-        jLabel3.setText("Equipamentos: ");
-        jLabel4.setText("Custos: " + custo);
-        jLabel5.setText("Lucro: " + lucro);
+       Cliente cliente = AplicacaoService.obterCliente(telefone);  
+       if (cliente != null) {
+           List<Projeto> projetos = cliente.obterProjetos();
+           if (projetos != null && !projetos.isEmpty()) {
+               Projeto projeto = projetos.get(0);  
 
-        jLabel2.setVisible(true);
-        jLabel3.setVisible(true);
-        jLabel4.setVisible(true);
-        jLabel5.setVisible(true);
+               Orcamento orcamento = projeto.getOrcamento();
+               if (orcamento != null) {
+                   jLabel2.setText("Situação atual: " + orcamento.getStatus());
+               } else {
+                   jLabel2.setText("Situação atual: Sem orçamento.");
+               }
+
+               String equipamentos = "Painel: " + projeto.getPainel().obterInformacoes() + 
+                                     " | Inversor: " + projeto.getInversor().obterInformacoes();
+               jLabel3.setText("Equipamentos: " + equipamentos);
+
+               float custoPlacas = projeto.getPainel().getPreco() * projeto.getQtdPaineis();
+               float custoInversores = projeto.getInversor().getPreco() * projeto.getQtdInversores();
+               float orcamentoTotal = AplicacaoService.calcularOrcamento(custoPlacas, custoInversores);
+
+               jLabel4.setText("Custos: " + (custoPlacas + custoInversores));
+               jLabel5.setText("Lucro: " + (orcamentoTotal - (custoPlacas + custoInversores)));
+           } else {
+               jLabel2.setText("Cliente sem projetos.");
+           }
+       } else {
+           jLabel2.setText("Cliente não encontrado.");
+       }
     }//GEN-LAST:event_botaoGerarActionPerformed
 
     /**
@@ -213,6 +233,6 @@ public class Relatorio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField relatorioEndereco;
-    private javax.swing.JTextField relatorioNome;
+    private javax.swing.JTextField relatorioTelefone;
     // End of variables declaration//GEN-END:variables
 }

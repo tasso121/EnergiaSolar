@@ -5,6 +5,7 @@
 package com.mycompany.EnergiaSolar.gui.Empresa;
 
 import com.mycompany.EnergiaSolar.gui.Cliente.*;
+import com.mycompany.EnergiaSolar.src.main.java.poo.example.*;
 
 /**
  *
@@ -132,13 +133,22 @@ public class ConsultarCliente extends javax.swing.JFrame {
     }
     
     private void consultarClienteNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarClienteNomeActionPerformed
-        //aparecer texto
+        String telefone = consultarClienteTelefone.getText();
+        String nome = consultarClienteNome.getText();
+        
+        Cliente cliente = AplicacaoService.obterCliente(telefone);
+        if(cliente != null) {
+            jLabel2.setText("Cliente cadastrado");
+        } else {
+            jLabel2.setText("Cliente não cadastrado");
+        }
+
+        jLabel2.setVisible(true);
+        
+        
     }//GEN-LAST:event_consultarClienteNomeActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        jLabel2.setVisible(true);
-        
         CadastroCliente cadastro = new CadastroCliente();
         cadastro.setVisible(true);
         this.dispose();

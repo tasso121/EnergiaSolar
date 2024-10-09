@@ -110,6 +110,11 @@ public class Equipamentos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String modelo = equipamentoModelo.getText();
+        String capacidade = equipamentoCapacidade.getText();
+        String inversor = equipamentoInversor.getText();
+        String fabricante = equipamentoFabricante.getText();
+        
         InicioEmpresa inicio = new InicioEmpresa();
         inicio.setVisible(true);
         this.dispose();

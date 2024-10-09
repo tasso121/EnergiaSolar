@@ -20,21 +20,16 @@ public class ProjetoCliente extends javax.swing.JFrame {
      */
     public ProjetoCliente() {
         initComponents();
-    }
-    
-    public ProjetoCliente(Cliente cliente, Projeto projeto) {
-        this.cliente = cliente;
-        this.projeto = projeto;
-
-        initComponents();
         configurarComponentes();
     }
     
     private void configurarComponentes() {
         if (projeto != null && projeto.getOrcamento() != null) {
-            valorOrcamento.setText("Valor: " + projeto.getOrcamento().getValor());
+            double valor = projeto.getOrcamento().getValor(); 
+            valorProjeto.setText("Valor: R$ " + String.format("%.2f", valor)); 
         }
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,8 +43,8 @@ public class ProjetoCliente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         botaoRecusaProjeto = new javax.swing.JButton();
         botaoAceitaProjeto = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        valorOrcamento = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        valorProjeto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,28 +71,44 @@ public class ProjetoCliente extends javax.swing.JFrame {
             }
         });
 
-        valorOrcamento.setColumns(20);
-        valorOrcamento.setRows(5);
-        valorOrcamento.setText("Valor: X");
-        jScrollPane1.setViewportView(valorOrcamento);
+        valorProjeto.setText("Valor: X");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(valorProjeto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(valorProjeto)
+                .addContainerGap(7, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(botaoRecusaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addComponent(botaoAceitaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(botaoRecusaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                        .addComponent(botaoAceitaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(38, 38, 38))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -105,9 +116,9 @@ public class ProjetoCliente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botaoRecusaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoAceitaProjeto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -127,8 +138,13 @@ public class ProjetoCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void botaoRecusaProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRecusaProjetoActionPerformed
+        
+        if (projeto.getOrcamento().getStatus() == StatusOrcamento.REPROVADO) {
+            JOptionPane.showMessageDialog(this, "Projeto já foi reprovado!", "Informação", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
         
         if (projeto != null && projeto.getOrcamento() != null) {
             projeto.getOrcamento().setStatus(StatusOrcamento.REPROVADO);
@@ -137,25 +153,33 @@ public class ProjetoCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Erro ao recusar o orçamento.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
-        InicioCliente inicio = new InicioCliente();
-        inicio.setVisible(true);
-        this.dispose();
+        voltarParaInicioCliente();
     }//GEN-LAST:event_botaoRecusaProjetoActionPerformed
 
     private void botaoAceitaProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAceitaProjetoActionPerformed
+        
+        if (projeto.getOrcamento().getStatus() == StatusOrcamento.APROVADO) {
+            JOptionPane.showMessageDialog(this, "Projeto já foi aprovado!", "Informação", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
         if (projeto != null && projeto.getOrcamento() != null) {
             projeto.getOrcamento().setStatus(StatusOrcamento.APROVADO);
             JOptionPane.showMessageDialog(this, "Orçamento aceito com sucesso.", "Informação", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Erro ao aceitar o orçamento.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
-
         
+        voltarParaInicioCliente();
+    }//GEN-LAST:event_botaoAceitaProjetoActionPerformed
+
+    private void voltarParaInicioCliente() {
         InicioCliente inicio = new InicioCliente();
         inicio.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_botaoAceitaProjetoActionPerformed
+    }
 
+    
     /**
      * @param args the command line arguments
      */
@@ -196,7 +220,7 @@ public class ProjetoCliente extends javax.swing.JFrame {
     private javax.swing.JButton botaoRecusaProjeto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea valorOrcamento;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel valorProjeto;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,4 +1,4 @@
-package poo.example;
+package com.mycompany.EnergiaSolar.src.main.java.poo.example;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

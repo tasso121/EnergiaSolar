@@ -49,7 +49,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel1" alignment="0" min="-2" pref="126" max="-2" attributes="0"/>
-                              <Component id="consultarProjetoEndereco" alignment="0" min="-2" pref="376" max="-2" attributes="0"/>
+                              <Component id="consultarProjetoTelefone" alignment="0" min="-2" pref="376" max="-2" attributes="0"/>
                               <Component id="consultarProjetoNome" alignment="0" min="-2" pref="376" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -75,7 +75,7 @@
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="consultarProjetoNome" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="consultarProjetoEndereco" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="consultarProjetoTelefone" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="botaoConsultar" alignment="1" min="-2" pref="47" max="-2" attributes="0"/>
@@ -97,17 +97,17 @@
             <Property name="text" type="java.lang.String" value="Projetos"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="consultarProjetoEndereco">
+        <Component class="javax.swing.JTextField" name="consultarProjetoTelefone">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
+            <Property name="text" type="java.lang.String" value="Telefone"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarProjetoEnderecoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarProjetoTelefoneActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="consultarProjetoNome">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nome"/>
+            <Property name="text" type="java.lang.String" value="Nome(telefone)"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarProjetoNomeActionPerformed"/>

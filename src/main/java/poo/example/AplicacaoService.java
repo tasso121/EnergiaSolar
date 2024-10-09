@@ -1,4 +1,4 @@
-package poo.example;
+package com.mycompany.EnergiaSolar.src.main.java.poo.example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +94,7 @@ public abstract class AplicacaoService {
     public static Cliente obterCliente(String telefone) {
     	for(Cliente cliente : clientes) {
     		if(cliente.getTelefone().equalsIgnoreCase(telefone))
-    			return cliente;
+                    return cliente;
     	}
     	
     	return null;

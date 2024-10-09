@@ -4,7 +4,8 @@
  */
 package com.mycompany.EnergiaSolar.gui.Cliente;
 
-import poo.example.AplicacaoService;
+import com.mycompany.EnergiaSolar.src.main.java.poo.example.AplicacaoService;
+import com.mycompany.EnergiaSolar.src.main.java.poo.example.Cliente;
 import javax.swing.JOptionPane;
 
 /**
@@ -149,6 +150,12 @@ public class CadastroCliente extends javax.swing.JFrame {
         // Verifica se os campos não estão vazios
         if (nome.isEmpty() || telefone.isEmpty() || endereco.isEmpty() || senhaCliente.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        Cliente clienteExistente = AplicacaoService.obterCliente(telefone);
+        if (clienteExistente != null) {
+            JOptionPane.showMessageDialog(this, "Cliente já cadastrado!", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
 

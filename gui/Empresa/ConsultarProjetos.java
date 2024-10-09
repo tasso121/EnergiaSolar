@@ -5,6 +5,8 @@
 package com.mycompany.EnergiaSolar.gui.Empresa;
 
 import com.mycompany.EnergiaSolar.gui.Cliente.*;
+import com.mycompany.EnergiaSolar.src.main.java.poo.example.*;
+import java.util.List;
 
 /**
  *
@@ -30,7 +32,7 @@ public class ConsultarProjetos extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        consultarProjetoEndereco = new javax.swing.JTextField();
+        consultarProjetoTelefone = new javax.swing.JTextField();
         consultarProjetoNome = new javax.swing.JTextField();
         botaoConsultar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -43,14 +45,14 @@ public class ConsultarProjetos extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Projetos");
 
-        consultarProjetoEndereco.setText("Endereço");
-        consultarProjetoEndereco.addActionListener(new java.awt.event.ActionListener() {
+        consultarProjetoTelefone.setText("Telefone");
+        consultarProjetoTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultarProjetoEnderecoActionPerformed(evt);
+                consultarProjetoTelefoneActionPerformed(evt);
             }
         });
 
-        consultarProjetoNome.setText("Nome");
+        consultarProjetoNome.setText("Nome(telefone)");
         consultarProjetoNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarProjetoNomeActionPerformed(evt);
@@ -83,7 +85,7 @@ public class ConsultarProjetos extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(consultarProjetoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(consultarProjetoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(consultarProjetoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(127, 127, 127)
@@ -102,7 +104,7 @@ public class ConsultarProjetos extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addComponent(consultarProjetoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(consultarProjetoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(consultarProjetoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botaoConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,12 +128,27 @@ public class ConsultarProjetos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void consultarProjetoEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarProjetoEnderecoActionPerformed
+    private void consultarProjetoTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarProjetoTelefoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_consultarProjetoEnderecoActionPerformed
+    }//GEN-LAST:event_consultarProjetoTelefoneActionPerformed
 
     private void consultarProjetoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarProjetoNomeActionPerformed
-        // TODO add your handling code here:
+        String telefone = consultarProjetoTelefone.getText();
+        String nome = consultarProjetoNome.getText();
+        
+        Cliente cliente = AplicacaoService.obterCliente(telefone);
+        List<Projeto> projetos = cliente.obterProjetos();
+        if (projetos != null && !projetos.isEmpty()) {
+            Projeto projeto = projetos.get(0); 
+            Orcamento orcamento = projeto.getOrcamento();
+            if (orcamento != null) {
+                jLabel2.setText("Situação atual: " + orcamento.getStatus());
+            } else {
+                jLabel2.setText("Sem orçamento disponível.");
+            }
+        } else {
+            jLabel2.setText("Cliente não possui projetos.");
+        }
     }//GEN-LAST:event_consultarProjetoNomeActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -177,8 +194,8 @@ public class ConsultarProjetos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoConsultar;
-    private javax.swing.JTextField consultarProjetoEndereco;
     private javax.swing.JTextField consultarProjetoNome;
+    private javax.swing.JTextField consultarProjetoTelefone;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

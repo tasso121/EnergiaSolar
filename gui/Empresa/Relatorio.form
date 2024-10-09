@@ -48,7 +48,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel1" alignment="0" pref="126" max="32767" attributes="0"/>
-                          <Component id="relatorioNome" alignment="0" max="32767" attributes="0"/>
+                          <Component id="relatorioTelefone" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="botaoGerar" min="-2" pref="82" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
@@ -83,7 +83,7 @@
                                   <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="relatorioNome" min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="relatorioTelefone" min="-2" pref="41" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="relatorioEndereco" min="-2" pref="41" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -120,12 +120,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="relatorioEnderecoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="relatorioNome">
+        <Component class="javax.swing.JTextField" name="relatorioTelefone">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nome"/>
+            <Property name="text" type="java.lang.String" value="Telefone"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="relatorioNomeActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="relatorioTelefoneActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botaoGerar">

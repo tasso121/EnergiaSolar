@@ -4,6 +4,8 @@
  */
 package com.mycompany.EnergiaSolar.gui.Empresa;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Tasso
@@ -99,9 +101,14 @@ public class LoginEmpresa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
-        InicioEmpresa inicio = new InicioEmpresa();
-        inicio.setVisible(true);
-        this.dispose();
+        String senha = new String(senhaEmpresa.getPassword());
+        if (senha.equals("12345678")) {
+            InicioEmpresa inicio = new InicioEmpresa();
+            inicio.setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Senha incorreta!");
+        }
     }//GEN-LAST:event_botaoEntrarActionPerformed
 
     private void senhaEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaEmpresaActionPerformed

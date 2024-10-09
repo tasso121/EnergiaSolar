@@ -32,7 +32,7 @@ public class OrcamentoCliente extends javax.swing.JFrame {
      */
     private void configurarComponentes() {
         // Remove o texto padrão nos campos de texto
-        textoNomeOrcamento.setText("Nome(Cliente)");
+        telefone.setText("Cliente(Telefone)");
         consumo.setText("Consumo(Kwh)");
         cidade.setText("Estado");
     }
@@ -43,7 +43,7 @@ public class OrcamentoCliente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        textoNomeOrcamento = new javax.swing.JTextField();
+        telefone = new javax.swing.JTextField();
         consumo = new javax.swing.JTextField();
         botaoGerarOrcamento = new javax.swing.JButton();
         cidade = new javax.swing.JTextField();
@@ -55,7 +55,7 @@ public class OrcamentoCliente extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Orçamento");
 
-        textoNomeOrcamento.setText("Cliente(nome)");
+        telefone.setText("Cliente(Telefone)");
 
         consumo.setText("Consumo(Kwh)");
         consumo.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +90,7 @@ public class OrcamentoCliente extends javax.swing.JFrame {
                         .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(consumo, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textoNomeOrcamento, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -104,7 +104,7 @@ public class OrcamentoCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(textoNomeOrcamento, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(consumo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -133,11 +133,11 @@ public class OrcamentoCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_consumoActionPerformed
 
     private void botaoGerarOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGerarOrcamentoActionPerformed
-        String nomeCliente = textoNomeOrcamento.getText();
+        String clienteTelefone = telefone.getText();
         String consumoTexto = consumo.getText();
         String cidadeCliente = cidade.getText();
 
-        if (nomeCliente.isEmpty() || consumoTexto.isEmpty() || cidadeCliente.isEmpty()) {
+        if (clienteTelefone.isEmpty() || consumoTexto.isEmpty() || cidadeCliente.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -150,25 +150,34 @@ public class OrcamentoCliente extends javax.swing.JFrame {
             return;
         }
 
-        Cliente cliente = Cliente.buscarClientePorNome(nomeCliente);
+        Cliente cliente = AplicacaoService.obterCliente(clienteTelefone);
         if (cliente == null) {
             JOptionPane.showMessageDialog(this, "Cliente não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        cliente.solicitarProjeto(consumoMedio);
+        if (!cliente.obterProjetos().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Cliente já possui um projeto em andamento!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-        JOptionPane.showMessageDialog(this, "Orçamento gerado com sucesso!");
+        cliente.solicitarProjeto(consumoMedio);
+        Projeto projeto = cliente.obterProjetos().get(0); 
+
+        float custoPlacas = 5000; // Valor de exemplo
+        float custoInversores = 3000; // Valor de exemplo
+        float orcamentoTotal = AplicacaoService.calcularOrcamento(custoPlacas, custoInversores);
+
+        AplicacaoService.enviarOrcamento(cliente, projeto, orcamentoTotal);
+
+        JOptionPane.showMessageDialog(this, "Orçamento gerado com sucesso! Valor: R$" + orcamentoTotal);
 
         ProjetoCliente projetoClienteTela = new ProjetoCliente();
         projetoClienteTela.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoGerarOrcamentoActionPerformed
    
-    private float calcularOrcamento(float consumoMedio) {
-        // valor exemplo
-        return consumoMedio * 10; 
-    }
+
     
     private void cidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeActionPerformed
         // TODO add your handling code here:
@@ -184,6 +193,6 @@ public class OrcamentoCliente extends javax.swing.JFrame {
     private javax.swing.JTextField consumo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField textoNomeOrcamento;
+    private javax.swing.JTextField telefone;
     // End of variables declaration//GEN-END:variables
 }
