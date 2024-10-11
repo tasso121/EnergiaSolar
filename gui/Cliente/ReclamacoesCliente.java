@@ -94,8 +94,7 @@ public class ReclamacoesCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEnviarActionPerformed
-        InicioCliente inicio = new InicioCliente();
-        inicio.setVisible(true);
+        new InicioCliente().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoEnviarActionPerformed
 

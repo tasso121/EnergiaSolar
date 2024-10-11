@@ -4,6 +4,7 @@
  */
 package com.mycompany.EnergiaSolar.gui.Cliente;
 
+import com.mycompany.EnergiaSolar.gui.LoginInicial;
 import com.mycompany.EnergiaSolar.src.main.java.poo.example.AplicacaoService;
 import com.mycompany.EnergiaSolar.src.main.java.poo.example.Cliente;
 import javax.swing.JOptionPane;
@@ -25,10 +26,10 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     private void configurarComponentes() {
         // Remove o texto padrão nos campos de texto
-        nomeCliente.setText("nome");
-        telefoneCliente.setText("telefone");
-        enderecoCliente.setText("endereço");
-        senha.setText("senha");
+        nomeCliente.setText("Nome");
+        telefoneCliente.setText("Telefone");
+        enderecoCliente.setText("Endereço");
+        senha.setText("Senha");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -39,8 +40,9 @@ public class CadastroCliente extends javax.swing.JFrame {
         nomeCliente = new javax.swing.JTextField();
         telefoneCliente = new javax.swing.JTextField();
         enderecoCliente = new javax.swing.JTextField();
-        botãoCadastro = new javax.swing.JButton();
+        botaoCadastro = new javax.swing.JButton();
         senha = new javax.swing.JPasswordField();
+        botaoVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,12 +72,12 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        botãoCadastro.setBackground(new java.awt.Color(0, 0, 153));
-        botãoCadastro.setForeground(new java.awt.Color(255, 255, 255));
-        botãoCadastro.setText("Cadastrar");
-        botãoCadastro.addActionListener(new java.awt.event.ActionListener() {
+        botaoCadastro.setBackground(new java.awt.Color(0, 0, 153));
+        botaoCadastro.setForeground(new java.awt.Color(255, 255, 255));
+        botaoCadastro.setText("Cadastrar");
+        botaoCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botãoCadastroActionPerformed(evt);
+                botaoCadastroActionPerformed(evt);
             }
         });
 
@@ -83,6 +85,15 @@ public class CadastroCliente extends javax.swing.JFrame {
         senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 senhaActionPerformed(evt);
+            }
+        });
+
+        botaoVoltar.setBackground(new java.awt.Color(0, 0, 153));
+        botaoVoltar.setForeground(new java.awt.Color(255, 255, 255));
+        botaoVoltar.setText("Voltar");
+        botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoVoltarActionPerformed(evt);
             }
         });
 
@@ -94,23 +105,28 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botaoVoltar))
                             .addComponent(telefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(enderecoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(158, 158, 158)
-                        .addComponent(botãoCadastro)))
+                        .addComponent(botaoCadastro)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoVoltar, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
                 .addComponent(nomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(telefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,8 +134,8 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addComponent(enderecoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(botãoCadastro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(botaoCadastro)
                 .addGap(24, 24, 24))
         );
 
@@ -141,7 +157,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_telefoneClienteActionPerformed
 
-    private void botãoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botãoCadastroActionPerformed
+    private void botaoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastroActionPerformed
         String nome = nomeCliente.getText();
         String telefone = telefoneCliente.getText();
         String endereco = enderecoCliente.getText();
@@ -166,7 +182,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         InicioCliente inicio = new InicioCliente();
         inicio.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_botãoCadastroActionPerformed
+    }//GEN-LAST:event_botaoCadastroActionPerformed
 
     private void nomeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeClienteActionPerformed
         // TODO add your handling code here:
@@ -179,6 +195,11 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_senhaActionPerformed
+
+    private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
+        new LoginInicial().setVisible(true); 
+        this.dispose(); 
+    }//GEN-LAST:event_botaoVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,7 +237,8 @@ public class CadastroCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botãoCadastro;
+    private javax.swing.JButton botaoCadastro;
+    private javax.swing.JButton botaoVoltar;
     private javax.swing.JTextField enderecoCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

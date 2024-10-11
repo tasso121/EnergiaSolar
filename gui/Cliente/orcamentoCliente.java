@@ -47,6 +47,7 @@ public class OrcamentoCliente extends javax.swing.JFrame {
         consumo = new javax.swing.JTextField();
         botaoGerarOrcamento = new javax.swing.JButton();
         cidade = new javax.swing.JTextField();
+        botaoVoltare = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +81,15 @@ public class OrcamentoCliente extends javax.swing.JFrame {
             }
         });
 
+        botaoVoltare.setBackground(new java.awt.Color(0, 0, 153));
+        botaoVoltare.setForeground(new java.awt.Color(255, 255, 255));
+        botaoVoltare.setText("Voltar");
+        botaoVoltare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoVoltareActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -88,10 +98,13 @@ public class OrcamentoCliente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(consumo, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botaoVoltare))
                             .addComponent(cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(132, 132, 132)
@@ -102,7 +115,9 @@ public class OrcamentoCliente extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoVoltare))
                 .addGap(18, 18, 18)
                 .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -183,12 +198,23 @@ public class OrcamentoCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cidadeActionPerformed
 
+    private void botaoVoltareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltareActionPerformed
+        new InicioCliente().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoVoltareActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoGerarOrcamento;
+    private javax.swing.JButton botaoVoltar;
+    private javax.swing.JButton botaoVoltar1;
+    private javax.swing.JButton botaoVoltar2;
+    private javax.swing.JButton botaoVoltar3;
+    private javax.swing.JButton botaoVoltar4;
+    private javax.swing.JButton botaoVoltare;
     private javax.swing.JTextField cidade;
     private javax.swing.JTextField consumo;
     private javax.swing.JLabel jLabel1;

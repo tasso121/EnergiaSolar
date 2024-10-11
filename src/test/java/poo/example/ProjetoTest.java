@@ -1,5 +1,6 @@
-package poo.example;
+package com.mycompany.EnergiaSolar.src.test.java.poo.example;
 
+import com.mycompany.EnergiaSolar.src.main.java.poo.example.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
