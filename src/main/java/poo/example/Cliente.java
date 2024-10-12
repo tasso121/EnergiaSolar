@@ -28,7 +28,7 @@ public class Cliente {
     }
 
     private void notificarEmpresa() {
-    	String mensagem = "Solicitação de projeto recebida do cliente: " + this.nome;
+    	String mensagem = "Solicitação de projeto recebida do cliente: " + this.nome + "Telefone: " + this.telefone;
     	AplicacaoService.adicionarNotificacao(mensagem);
     }
 

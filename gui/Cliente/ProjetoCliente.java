@@ -13,15 +13,11 @@ import javax.swing.JOptionPane;
  */
 public class ProjetoCliente extends javax.swing.JFrame {
     
-    private Cliente cliente;
-    private Projeto projeto;
     /**
      * Creates new form ProjetoCliente
      */
-    
-    float custoPlacas = 5000; // Valor de exemplo
-    float custoInversores = 3000; // Valor de exemplo
-    float valor = AplicacaoService.calcularOrcamento(custoPlacas, custoInversores);
+    int indice = 0;
+
     
     public ProjetoCliente() {
         initComponents();
@@ -29,7 +25,9 @@ public class ProjetoCliente extends javax.swing.JFrame {
     }
     
     private void configurarComponentes() {
-            valorProjeto.setText("Valor: R$ " + valor); 
+        Projeto projeto = AplicacaoService.obterProjeto(indice);
+        float valor = projeto.getOrcamento().getValor();
+        valorProjeto.setText("Valor: R$ " + valor); 
     }
     
     /**
@@ -154,20 +152,14 @@ public class ProjetoCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void botaoRecusaProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRecusaProjetoActionPerformed
-
-        projeto.getOrcamento().setStatus(StatusOrcamento.REPROVADO);
-        JOptionPane.showMessageDialog(this, "Orçamento recusado com sucesso.", "Informação", JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(this, "Erro ao recusar o orçamento.", "Erro", JOptionPane.ERROR_MESSAGE);
-        
+        indice++;
+        JOptionPane.showMessageDialog(this, "Projeto recusado!"); 
         voltarParaInicioCliente();
     }//GEN-LAST:event_botaoRecusaProjetoActionPerformed
 
     private void botaoAceitaProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAceitaProjetoActionPerformed
-   
-        projeto.getOrcamento().setStatus(StatusOrcamento.APROVADO);
-        JOptionPane.showMessageDialog(this, "Orçamento aceito com sucesso.", "Informação", JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(this, "Erro ao aceitar o orçamento.", "Erro", JOptionPane.ERROR_MESSAGE);
-        
+        indice++;
+        JOptionPane.showMessageDialog(this, "Projeto aceito com sucesso!");
         voltarParaInicioCliente();
     }//GEN-LAST:event_botaoAceitaProjetoActionPerformed
 

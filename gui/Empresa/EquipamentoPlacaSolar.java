@@ -50,6 +50,11 @@ public class EquipamentoPlacaSolar extends javax.swing.JFrame {
         equipamentoPreço.setText("Preço");
 
         equipamentoFabricante.setText("Fabricante");
+        equipamentoFabricante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                equipamentoFabricanteActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 0, 153));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,6 +172,10 @@ public class EquipamentoPlacaSolar extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_voltarActionPerformed
 
+    private void equipamentoFabricanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equipamentoFabricanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_equipamentoFabricanteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -203,9 +212,6 @@ public class EquipamentoPlacaSolar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoVoltar;
-    private javax.swing.JButton botaoVoltar1;
-    private javax.swing.JButton botaoVoltar2;
     private javax.swing.JTextField capacidade;
     private javax.swing.JTextField equipamentoFabricante;
     private javax.swing.JTextField equipamentoModelo;
