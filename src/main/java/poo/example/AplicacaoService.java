@@ -1,4 +1,4 @@
-package com.mycompany.EnergiaSolar.src.main.java.poo.example;
+package poo.example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,25 +8,24 @@ public abstract class AplicacaoService {
     private static List<String> notificacoes = new ArrayList<>();
     private static List<Fabricante> fabricantes = new ArrayList<>();
     private static List<Equipamento> equipamentos = new ArrayList<>();
-    private static List<Projeto> projetos = new ArrayList<>();
     private static final float margemLucro = 0.3f;
     private static final float custoMaoDeObra = 1200;
     private static final String senha = "3n3rg1@So7a@r";
 
     public static void cadastrarCliente(String nome, String endereco, String telefone, String senha) {
-    	new Cliente(nome, endereco, telefone, senha);
+    	clientes.add(new Cliente(nome, endereco, telefone, senha));
     }
 
     public static void cadastrarFabricante(String nome){
-    	new Fabricante(nome);
+    	fabricantes.add(new Fabricante(nome));
     }
 
     public static void cadastrarPlacaSolar(String modelo, float preco, Fabricante fabricante, float capacidade) {
-    	new PlacaSolar(modelo, preco, fabricante, capacidade);
+    	equipamentos.add(new PlacaSolar(modelo, preco, fabricante, capacidade));
     }
 
     public static void cadastrarInversor(String modelo, float preco, Fabricante fabricante, float potencia) {
-    	new Inversor(modelo, preco, fabricante, potencia);
+    	equipamentos.add(new Inversor(modelo, preco, fabricante, potencia));
     }
 
     public static int calcularNumeroPaineis(Projeto projeto, PlacaSolar placa, int incidenciaSolar) {
@@ -66,14 +65,6 @@ public abstract class AplicacaoService {
     public static void adicionarNotificacao(String notificacao) {
     	notificacoes.add(notificacao);
     }
-    
-    public static void adicionarCliente(Cliente cliente) {
-    	clientes.add(cliente);
-    }
-    
-    public static void adicionarProjeto(Projeto projeto) {
-    	projetos.add(projeto);
-    }
 
     public static List<String> getNotificacoes() {
         return notificacoes;
@@ -81,10 +72,6 @@ public abstract class AplicacaoService {
 
     public static String getSenha() {
         return senha;
-    }
-    
-    public static void adicionarFabricante(Fabricante fabricante) {
-    	fabricantes.add(fabricante);
     }
     
     public static void adicionarEquipamento(Equipamento equipamento) {
@@ -119,7 +106,7 @@ public abstract class AplicacaoService {
     }
     
     public static Projeto obterProjeto(int id) {
-    	for(Projeto projeto : projetos) {
+    	for(Projeto projeto : getProjetos()) {
     		if(projeto.getId() == id)
     			return projeto;
     	}
@@ -128,6 +115,14 @@ public abstract class AplicacaoService {
     }
     
     public static List<Projeto> getProjetos() {
+    	List<Projeto> projetos = new ArrayList<>();
+    	
+    	for(Cliente cliente: clientes) {
+    		for(Projeto projeto : cliente.obterProjetos()) {
+    			projetos.add(projeto);
+    		}
+    	}
+    	
     	return projetos;
     }
     

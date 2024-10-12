@@ -1,4 +1,4 @@
-package com.mycompany.EnergiaSolar.src.main.java.poo.example;
+package poo.example;
 
 public class PlacaSolar extends Equipamento {
     private float capacidade;
@@ -6,7 +6,6 @@ public class PlacaSolar extends Equipamento {
     public PlacaSolar(String modelo, float preco, Fabricante fabricante, float capacidade) {
         super(modelo, preco, fabricante);
         this.capacidade = capacidade;
-        AplicacaoService.adicionarEquipamento(this);
     }
     
     public float getCapacidade()

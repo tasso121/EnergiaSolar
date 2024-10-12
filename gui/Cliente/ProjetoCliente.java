@@ -4,7 +4,7 @@
  */
 package com.mycompany.EnergiaSolar.gui.Cliente;
 
-import com.mycompany.EnergiaSolar.src.main.java.poo.example.*;
+import poo.example.*;
 import javax.swing.JOptionPane;
 
 /**

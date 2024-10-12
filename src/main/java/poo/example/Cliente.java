@@ -1,4 +1,4 @@
-package com.mycompany.EnergiaSolar.src.main.java.poo.example;
+package poo.example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +18,10 @@ public class Cliente {
         this.senha = senha;
         this.notificacoes = new ArrayList<>();
         this.projetos = new ArrayList<>();
-        AplicacaoService.adicionarCliente(this);
     }
 
     public void solicitarProjeto(float consumoMedio) {
-        Projeto projeto = new Projeto(this, consumoMedio);
-        this.adicionarProjeto(projeto);
+        new Projeto(this, consumoMedio);
         this.notificarEmpresa();
     }
 

@@ -1,4 +1,4 @@
-package com.mycompany.EnergiaSolar.src.main.java.poo.example;
+package poo.example;
 
 public abstract class Equipamento {
     private String modelo;
