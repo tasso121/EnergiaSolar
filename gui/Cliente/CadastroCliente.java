@@ -5,8 +5,8 @@
 package com.mycompany.EnergiaSolar.gui.Cliente;
 
 import com.mycompany.EnergiaSolar.gui.LoginInicial;
-import com.mycompany.EnergiaSolar.src.main.java.poo.example.AplicacaoService;
-import com.mycompany.EnergiaSolar.src.main.java.poo.example.Cliente;
+import poo.example.AplicacaoService;
+import poo.example.Cliente;
 import javax.swing.JOptionPane;
 
 /**

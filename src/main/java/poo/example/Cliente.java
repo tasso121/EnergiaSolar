@@ -1,4 +1,4 @@
-package com.mycompany.EnergiaSolar.src.main.java.poo.example;
+package poo.example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,6 @@ public class Cliente {
         this.senha = senha;
         this.notificacoes = new ArrayList<>();
         this.projetos = new ArrayList<>();
-        AplicacaoService.adicionarCliente(this);
     }
 
     public void solicitarProjeto(float consumoMedio) {
@@ -85,6 +84,9 @@ public class Cliente {
     	String senha = this.senha + ';';
     	
     	String informacao = nome + endereco + telefone + senha;
+    	
+    	if(this.notificacoes.size() == 0)
+    		informacao = informacao.substring(0, informacao.length() - 1);
     	
     	for(String notificacao : this.notificacoes) {
     		informacao += notificacao + ';';

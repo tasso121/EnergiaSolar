@@ -1,4 +1,4 @@
-package com.mycompany.EnergiaSolar.src.main.java.poo.example;
+package poo.example;
 
 public class Projeto {
     private int id;
@@ -21,7 +21,6 @@ public class Projeto {
         this.qtd_inversores = null;
         this.consumo_medio_cliente = consumoMedio;
         this.cliente.adicionarProjeto(this);
-        AplicacaoService.adicionarProjeto(this);
     }
     
     public int getId() {
@@ -30,6 +29,10 @@ public class Projeto {
     
     public Orcamento getOrcamento() {
     	return this.orcamento;
+    }
+    
+    public Cliente getCliente() {
+    	return this.cliente;
     }
     
     public float getConsumoCliente() {
