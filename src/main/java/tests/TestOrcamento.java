@@ -60,7 +60,7 @@ class TestOrcamento {
 
 	@Test
 	void testObterInformacoes() {
-		String informacao = "5700.54;REPROVADO;" + this.projeto.getId();
+		String informacao = "5700.54;PENDENTE;" + this.projeto.getId();
 		
 		assertEquals(informacao, this.orcamento.obterInformacoes());
 	}

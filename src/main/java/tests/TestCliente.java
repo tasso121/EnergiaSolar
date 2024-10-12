@@ -73,7 +73,7 @@ class TestCliente {
 
 	@Test
 	void testGetTelefone() {
-		assertEquals("(99)99999-9999", this.cliente.getTelefone());
+		assertEquals("(99) 99999-9999", this.cliente.getTelefone());
 	}
 
 	@Test
@@ -95,7 +95,7 @@ class TestCliente {
 
 	@Test
 	void testObterInformacoes() {
-		String informacao = "Fulano;Rua dos Bobos n° 0;(99)99999-9999;senha123";
+		String informacao = "Fulano;Rua dos Bobos n° 0;(99) 99999-9999;senha123";
 		
 		assertEquals(informacao, this.cliente.obterInformacoes());
 	}

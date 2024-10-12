@@ -47,11 +47,11 @@ public class Projeto {
     	return this.inversor;
     }
     
-    public int getQtdPaineis() {
+    public Integer getQtdPaineis() {
     	return this.qtd_paineis;
     }
     
-    public int getQtdInversores() {
+    public Integer getQtdInversores() {
     	return this.qtd_inversores;
     }
     

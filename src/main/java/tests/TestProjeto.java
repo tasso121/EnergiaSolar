@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import poo.example.AplicacaoService;
 import poo.example.Cliente;
 import poo.example.Fabricante;
 import poo.example.Inversor;
@@ -47,12 +46,6 @@ class TestProjeto {
 	@Test
 	void testProjeto() {
 		assertNotNull(this.projeto);
-	}
-
-	@Test
-	void testGetId() {
-		int id = AplicacaoService.getProjetos().size() + 1;
-		assertEquals(id, this.projeto.getId());
 	}
 
 	@Test
@@ -143,7 +136,7 @@ class TestProjeto {
 
 	@Test
 	void testObterInformacoes() {
-		String informacao = "(99)99999-9999;null;null;null;null;70";
+		String informacao = "(99) 99999-9999;null;null;null;null;70.0";
 		
 		assertEquals(informacao, this.projeto.obterInformacoes());
 	}

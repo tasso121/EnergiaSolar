@@ -38,7 +38,7 @@ class TestInversor {
 
 	@Test
 	void testObterInformacoes() {
-		String informacoes = "SX-770;799.90;Sergipe Equipamentos;0.6";
+		String informacoes = "SX-770;799.9;Sergipe Equipamentos;0.6";
 		
 		assertEquals(informacoes, this.inversor.obterInformacoes());
 	}

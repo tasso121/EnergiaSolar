@@ -21,8 +21,7 @@ public class Cliente {
     }
 
     public void solicitarProjeto(float consumoMedio) {
-        Projeto projeto = new Projeto(this, consumoMedio);
-        this.adicionarProjeto(projeto);
+        new Projeto(this, consumoMedio);
         this.notificarEmpresa();
     }
 
@@ -84,9 +83,6 @@ public class Cliente {
     	String senha = this.senha + ';';
     	
     	String informacao = nome + endereco + telefone + senha;
-    	
-    	if(this.notificacoes.size() == 0)
-    		informacao = informacao.substring(0, informacao.length() - 1);
     	
     	for(String notificacao : this.notificacoes) {
     		informacao += notificacao + ';';
