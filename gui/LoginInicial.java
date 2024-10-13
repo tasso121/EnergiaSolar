@@ -7,8 +7,9 @@ package com.mycompany.EnergiaSolar.gui;
 import com.mycompany.EnergiaSolar.gui.Cliente.CadastroCliente;
 import com.mycompany.EnergiaSolar.gui.Cliente.LoginCliente;
 import com.mycompany.EnergiaSolar.gui.Empresa.LoginEmpresa;
-
-import poo.example.Dados;
+import com.mycompany.EnergiaSolar.src.main.java.poo.example.Dados;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  *

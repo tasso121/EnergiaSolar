@@ -140,11 +140,15 @@ public class LoginCliente extends javax.swing.JFrame {
             return;
         }
 
-        Cliente clienteExistente = AplicacaoService.obterCliente(telefone);        
-        if(clienteExistente!=null){
+        Cliente clienteExistente = AplicacaoService.obterCliente(telefone);
+        
+        if(clienteExistente!=null && clienteExistente.getSenha() == senhaCliente){
             new InicioCliente().setVisible(true);
             this.dispose();
-        }else{
+        }else if(clienteExistente.getSenha() != senhaCliente){
+            JOptionPane.showMessageDialog(this, "Senha incorreta!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
             JOptionPane.showMessageDialog(this, "Cliente não cadastrado!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
         
