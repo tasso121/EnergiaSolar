@@ -135,10 +135,6 @@ public class Inversor extends javax.swing.JFrame {
            float preco = Float.parseFloat(precoTexto);
 
            Fabricante fabricante = AplicacaoService.obterFabricante(nomeFabricante);
-           if (fabricante == null) {
-               fabricante = new Fabricante(nomeFabricante);
-               AplicacaoService.adicionarFabricante(fabricante);
-           }
 
            AplicacaoService.cadastrarInversor(equipamentoPotencia.getText(), preco, fabricante, potencia);
            javax.swing.JOptionPane.showMessageDialog(this, "Inversor cadastrado com sucesso!");

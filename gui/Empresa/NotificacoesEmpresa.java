@@ -30,11 +30,14 @@ public class NotificacoesEmpresa extends javax.swing.JFrame {
     private void atualizarNotificacoes() {
         List<String> listaNotificacoes = AplicacaoService.getNotificacoes();
         if (listaNotificacoes.isEmpty()) {
+            notificacoes1.setVisible(false);
             notificacoes.setText("Nenhuma notificação no momento.");
         } else {
             String primeiraNotificacao = listaNotificacoes.get(0); 
             listaNotificacoes.remove(0);
-            notificacoes.setText("Notificação: " + primeiraNotificacao);
+            notificacoes.setVisible(false);
+            notificacoes1.setVisible(true);
+            notificacoes1.setText("Notificação: " + primeiraNotificacao);
         }
     }
 
@@ -51,6 +54,7 @@ public class NotificacoesEmpresa extends javax.swing.JFrame {
         inversor = new javax.swing.JTextField();
         botaoOrcamento = new javax.swing.JButton();
         telefoneCliente = new javax.swing.JTextField();
+        notificacoes1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,6 +88,9 @@ public class NotificacoesEmpresa extends javax.swing.JFrame {
             }
         });
 
+        notificacoes1.setForeground(new java.awt.Color(255, 255, 255));
+        notificacoes1.setText("Situação atual: X");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -96,37 +103,38 @@ public class NotificacoesEmpresa extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(inversor, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                                .addComponent(botaoOrcamento))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(telefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(notificacoes)
-                                    .addComponent(preco, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(placaSolar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(87, 87, 87))
+                            .addComponent(inversor, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(telefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(notificacoes)
+                            .addComponent(preco, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(placaSolar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaoOrcamento))))
+                .addGap(35, 35, 35)
+                .addComponent(notificacoes1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(notificacoes)
-                .addGap(27, 27, 27)
-                .addComponent(telefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(preco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(placaSolar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inversor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoOrcamento))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(notificacoes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(notificacoes)
+                        .addGap(27, 27, 27)
+                        .addComponent(telefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(preco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(placaSolar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(inversor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botaoOrcamento)
+                        .addGap(0, 17, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,7 +145,7 @@ public class NotificacoesEmpresa extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -151,17 +159,22 @@ public class NotificacoesEmpresa extends javax.swing.JFrame {
             
             Cliente cliente = AplicacaoService.obterCliente(telefone);
             List<Projeto> listaProjetos = cliente.obterProjetos();
+            Equipamento placas = AplicacaoService.obterEquipamento(modeloPlaca);
+            Equipamento inversores = AplicacaoService.obterEquipamento(modeloInversor);
             
-            if (precoTexto.isEmpty() || modeloPlaca.isEmpty() || modeloInversor.isEmpty()) {
+            if (precoTexto.isEmpty() || modeloPlaca.isEmpty() || modeloInversor.isEmpty() || telefone.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
             for (Projeto projeto : listaProjetos) {
-                float custoTot = AplicacaoService.calcularOrcamento(Float.parseFloat(precoTexto), Float.parseFloat(precoTexto));
+                float custoTot = AplicacaoService.calcularOrcamento(placas.getPreco(), inversores.getPreco());
                 AplicacaoService.enviarOrcamento(cliente, projeto, custoTot);
             }
-
+            
+            JOptionPane.showMessageDialog(this, "Orçamento enviado!");
+            new InicioEmpresa().setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_botaoOrcamentoActionPerformed
 
     private void telefoneClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefoneClienteActionPerformed
@@ -213,6 +226,7 @@ public class NotificacoesEmpresa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel notificacoes;
+    private javax.swing.JLabel notificacoes1;
     private javax.swing.JTextField placaSolar;
     private javax.swing.JTextField preco;
     private javax.swing.JTextField telefoneCliente;

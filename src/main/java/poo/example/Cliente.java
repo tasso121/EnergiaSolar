@@ -1,4 +1,4 @@
-package poo.example;
+package com.mycompany.EnergiaSolar.src.main.java.poo.example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class Cliente {
     }
 
     private void notificarEmpresa() {
-    	String mensagem = "Solicitação de projeto recebida do cliente: " + this.nome + "Telefone: " + this.telefone;
+    	String mensagem = ("Solicitação de projeto recebida do cliente: " + this.nome + "\n Telefone: " + this.telefone + "\n Endereço: " + this.endereco);
     	AplicacaoService.adicionarNotificacao(mensagem);
     }
 

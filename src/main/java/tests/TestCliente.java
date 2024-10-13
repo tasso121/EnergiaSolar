@@ -1,4 +1,4 @@
-package tests;
+package com.mycompany.EnergiaSolar.src.main.java.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,8 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import poo.example.AplicacaoService;
-import poo.example.Cliente;
+import com.mycompany.EnergiaSolar.src.main.java.poo.example.*;
 
 class TestCliente {
 	private Cliente cliente;
@@ -48,7 +47,7 @@ class TestCliente {
 		this.cliente.solicitarProjeto(56);
 		
 		assertEquals(qtdNotificacoes + 1, AplicacaoService.getNotificacoes().size());
-		AplicacaoService.getNotificacoes().removeLast();
+		AplicacaoService.getNotificacoes().remove(qtdNotificacoes-1);
 		
 		
 		assertEquals(1, this.cliente.obterProjetos().size());

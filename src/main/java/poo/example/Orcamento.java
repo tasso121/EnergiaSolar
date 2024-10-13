@@ -1,4 +1,4 @@
-package poo.example;
+package com.mycompany.EnergiaSolar.src.main.java.poo.example;
 
 public class Orcamento {
     private float valor;

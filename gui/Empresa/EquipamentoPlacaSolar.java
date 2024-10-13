@@ -4,7 +4,7 @@
  */
 package com.mycompany.EnergiaSolar.gui.Empresa;
 
-import com.mycompany.EnergiaSolar.src.main.java.poo.example.AplicacaoService;
+import com.mycompany.EnergiaSolar.src.main.java.poo.example.*;
 import com.mycompany.EnergiaSolar.src.main.java.poo.example.Fabricante;
 
 /**
@@ -150,10 +150,7 @@ public class EquipamentoPlacaSolar extends javax.swing.JFrame {
             float capacidade = Float.parseFloat(capacidadeTexto);
 
             Fabricante fabricante = AplicacaoService.obterFabricante(fabricanteNome);
-            if (fabricante == null) {
-                fabricante = new Fabricante(fabricanteNome);
-                AplicacaoService.adicionarFabricante(fabricante);
-            }
+
 
             AplicacaoService.cadastrarPlacaSolar(modelo, preco, fabricante, capacidade);
             javax.swing.JOptionPane.showMessageDialog(this, "Equipamento Placa Solar cadastrado com sucesso!");

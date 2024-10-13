@@ -1,4 +1,4 @@
-package tests;
+package com.mycompany.EnergiaSolar.src.main.java.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,9 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import poo.example.Equipamento;
-import poo.example.Fabricante;
-import poo.example.PlacaSolar;
+import com.mycompany.EnergiaSolar.src.main.java.poo.example.*;
 
 class TestEquipamento {
 	private Equipamento equipamento;

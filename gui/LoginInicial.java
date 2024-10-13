@@ -5,6 +5,7 @@
 package com.mycompany.EnergiaSolar.gui;
 
 import com.mycompany.EnergiaSolar.gui.Cliente.CadastroCliente;
+import com.mycompany.EnergiaSolar.gui.Cliente.LoginCliente;
 import com.mycompany.EnergiaSolar.gui.Empresa.LoginEmpresa;
 
 /**
@@ -33,6 +34,7 @@ public class LoginInicial extends javax.swing.JFrame {
         botaoEmpresa = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         botaoCliente = new javax.swing.JButton();
+        botaoEmpresa1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,10 +57,19 @@ public class LoginInicial extends javax.swing.JFrame {
 
         botaoCliente.setBackground(new java.awt.Color(0, 0, 102));
         botaoCliente.setForeground(new java.awt.Color(255, 255, 255));
-        botaoCliente.setText("Cliente");
+        botaoCliente.setText("Cadastro cliente");
         botaoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoClienteActionPerformed(evt);
+            }
+        });
+
+        botaoEmpresa1.setBackground(new java.awt.Color(0, 0, 153));
+        botaoEmpresa1.setForeground(new java.awt.Color(255, 255, 255));
+        botaoEmpresa1.setText("Login Cliente");
+        botaoEmpresa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEmpresa1ActionPerformed(evt);
             }
         });
 
@@ -67,27 +78,30 @@ public class LoginInicial extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botaoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botaoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botaoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(botaoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addComponent(botaoEmpresa1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(botaoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(botaoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botaoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(botaoEmpresa1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -105,16 +119,19 @@ public class LoginInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEmpresaActionPerformed
-        LoginEmpresa login = new LoginEmpresa();
-        login.setVisible(true);
+        new LoginEmpresa().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoEmpresaActionPerformed
 
     private void botaoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoClienteActionPerformed
-        CadastroCliente cadastro = new CadastroCliente();
-        cadastro.setVisible(true);
+        new CadastroCliente().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoClienteActionPerformed
+
+    private void botaoEmpresa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEmpresa1ActionPerformed
+        new LoginCliente().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoEmpresa1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,6 +171,7 @@ public class LoginInicial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCliente;
     private javax.swing.JButton botaoEmpresa;
+    private javax.swing.JButton botaoEmpresa1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

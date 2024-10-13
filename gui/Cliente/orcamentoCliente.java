@@ -177,9 +177,9 @@ public class OrcamentoCliente extends javax.swing.JFrame {
         }
 
         cliente.solicitarProjeto(consumoMedio);
-        
-        ProjetoCliente projetoClienteTela = new ProjetoCliente();
-        projetoClienteTela.setVisible(true);
+        JOptionPane.showMessageDialog(this, "Pedido de orçamento enviado!");
+
+        new InicioCliente().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoGerarOrcamentoActionPerformed
    

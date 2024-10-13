@@ -4,8 +4,7 @@
  */
 package com.mycompany.EnergiaSolar.gui.Empresa;
 
-import com.mycompany.EnergiaSolar.src.main.java.poo.example.AplicacaoService;
-import com.mycompany.EnergiaSolar.src.main.java.poo.example.Fabricante;
+import com.mycompany.EnergiaSolar.src.main.java.poo.example.*;
 
 /**
  *
@@ -123,15 +122,9 @@ public class EquipamentoFabricante extends javax.swing.JFrame {
             return;
         }
 
-        Fabricante fabricante = AplicacaoService.obterFabricante(nomeFabricante);
-        if (fabricante == null) {
-            fabricante = new Fabricante(nomeFabricante);
-            AplicacaoService.adicionarFabricante(fabricante);
-            javax.swing.JOptionPane.showMessageDialog(this, "Fabricante cadastrado com sucesso!");
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Fabricante já está registrado.");
-        }
-
+        AplicacaoService.cadastrarFabricante(nomeFabricante);
+        javax.swing.JOptionPane.showMessageDialog(this, "Fabricante cadastrado com sucesso!");
+        
         InicioEmpresa inicio = new InicioEmpresa();
         inicio.setVisible(true);
         this.dispose();
