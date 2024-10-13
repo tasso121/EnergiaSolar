@@ -8,6 +8,8 @@ import com.mycompany.EnergiaSolar.gui.Cliente.CadastroCliente;
 import com.mycompany.EnergiaSolar.gui.Cliente.LoginCliente;
 import com.mycompany.EnergiaSolar.gui.Empresa.LoginEmpresa;
 
+import poo.example.Dados;
+
 /**
  *
  * @author Tasso
@@ -19,6 +21,18 @@ public class LoginInicial extends javax.swing.JFrame {
      */
     public LoginInicial() {
         initComponents();
+        
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+                Dados.carregarDados();
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                Dados.persistirDados();
+            }
+        });
     }
 
     /**

@@ -20,9 +20,10 @@ public class Cliente {
         this.projetos = new ArrayList<>();
     }
 
-    public void solicitarProjeto(float consumoMedio) {
-        new Projeto(this, consumoMedio);
+    public Projeto solicitarProjeto(float consumoMedio) {
+        Projeto projeto = new Projeto(this, consumoMedio);
         this.notificarEmpresa();
+        return projeto;
     }
 
     private void notificarEmpresa() {
