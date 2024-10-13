@@ -12,8 +12,10 @@ public abstract class AplicacaoService {
     private static final float custoMaoDeObra = 1200;
     private static final String senha = "3n3rg1@So7a@r";
 
-    public static void cadastrarCliente(String nome, String endereco, String telefone, String senha) {
-    	clientes.add(new Cliente(nome, endereco, telefone, senha));
+    public static Cliente cadastrarCliente(String nome, String endereco, String telefone, String senha) {
+    	Cliente cliente = new Cliente(nome, endereco, telefone, senha);
+    	clientes.add(cliente);
+    	return cliente;
     }
 
     public static void cadastrarFabricante(String nome){
@@ -51,9 +53,10 @@ public abstract class AplicacaoService {
     	return orcamento;
     }
     
-    public static void enviarOrcamento(Cliente cliente, Projeto projeto, float valorOrcamento) {
-    	new Orcamento(valorOrcamento, projeto);
+    public static Orcamento enviarOrcamento(Cliente cliente, Projeto projeto, float valorOrcamento) {
+    	Orcamento orcamento = new Orcamento(valorOrcamento, projeto);
     	notificarCliente(cliente, projeto);
+    	return orcamento;
     }
     
     private static void notificarCliente(Cliente cliente, Projeto projeto) {
@@ -126,11 +129,25 @@ public abstract class AplicacaoService {
     	return projetos;
     }
     
+    public static List<Orcamento> getOrcamentos() {
+    	List<Orcamento> orcamentos = new ArrayList<>();
+    	
+    	for(Projeto projeto: getProjetos()) {
+    		orcamentos.add(projeto.getOrcamento());
+    	}
+    	
+    	return orcamentos;
+    }
+    
     public static List<Cliente> getClientes() {
     	return clientes;
     }
     
     public static List<Equipamento> getEquipamentos() {
     	return equipamentos;
+    }
+    
+    public static List<Fabricante> getFabricantes() {
+    	return fabricantes;
     }
 }
